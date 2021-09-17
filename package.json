@@ -1,0 +1,84 @@
+{
+  "name": "@zcy/zcy-skuPathFinder-back",
+  "version": "0.0.3",
+  "description": "采购目录分类选择",
+  "author": {
+    "name": "malei",
+    "email": "malei@cai-inc.com"
+  },
+  "maintainers": [
+    {
+      "name": "malei",
+      "email": "malei@cai-inc.com"
+    }
+  ],
+  "thumb": "https://sitecdn.zcycdn.com/f2e-assets/f69cb175-b7cb-44cf-b976-2ca183253631.png",
+  "type": "component",
+  "sceneType": "<%= sceneType || '' %>",
+  "functionType": "<%= functionType || '' %>",
+  "tags": "全网通用",
+  "main": "lib/sku.js",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "dev": "react-scripts start",
+    "lib": "rm -rf lib && babel src/components/index.js -d lib --copy-files",
+    "build": "npm run lib"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@git.cai-inc.com:f2e-cube/local/react/zcy-skuPathFinder-back.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "antd": "^4.16.13"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-proposal-decorators": "^7.8.3",
+    "@babel/plugin-proposal-export-default-from": "^7.8.3",
+    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@babel/plugin-syntax-jsx": "^7.14.5",
+    "@babel/plugin-transform-destructuring": "^7.9.5",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "@babel/plugin-transform-spread": "^7.8.3",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "@hot-loader/react-dom": "^16.13.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "antd": "^4.16.13",
+    "babel-eslint": "^10.0.0",
+    "babel-loader": "^8.0.0",
+    "babel-plugin-dva-hmr": "^0.4.1",
+    "babel-plugin-import": "^1.8.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-hot": "0.0.1",
+    "react-hot-loader": "^4.12.20",
+    "react-scripts": "4.0.3",
+    "redbox-react": "^1.5.0",
+    "web-vitals": "^1.1.2"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 5.0.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
