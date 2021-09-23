@@ -64,15 +64,29 @@ export default class Demo extends Component {
    * @param {String} type 
    * @param {Number} prime 
    */
-  onClickSelType = (type, prime) => {
-    // 获取已经选中的规格
-    const { selected } = this.state;
+  onClickSelType = (type, prime, primeIndex) => {
+    // 获取已经选中的规格,质数，规格枚举值,以及原本规格名称
+    const { selected, valueInLabel, type:stateType } = this.state;
     // 检查此次选择是否在已选内容中
     const index = selected.indexOf(type);
+    // 获取已经有的矩阵值
+    const light = this.pathFinder.light;
     // 如果未选中则提供选中，如果选中移除
     if (index > -1) {
       this.pathFinder.remove(prime);
       selected.splice(index, 1);
+    } else if(light[primeIndex].includes(2)) {
+      // 如果同规格中，有选中，则先移除选中，
+      // 获取需要移除的同行规格
+      const removeType = stateType[primeIndex][light[primeIndex].indexOf(2)];
+      // 获取需要提出的同行规格质数
+      const removePrime = valueInLabel[removeType];
+      // 移除
+      this.pathFinder.remove(removePrime)
+      selected.splice(selected.indexOf(removeType), 1);
+      //移除同行后，添加当前选择规格
+      this.pathFinder.add(prime)
+      selected.push(type);
     } else {
       this.pathFinder.add(prime);
       selected.push(type);
@@ -80,6 +94,7 @@ export default class Demo extends Component {
 
     // 更新不可选规格
     const unDisabled = this.pathFinder.getWay().flat();
+
 
     this.setState({
       selected,
@@ -90,7 +105,7 @@ export default class Demo extends Component {
   render() {
     const { type, selected, unDisabled, canUseSku, valueInLabel } = this.state;
 
-    const typeBtns = type.map((item) => {
+    const typeBtns = type.map((item, index) => {
       return (
         <div style={{ margin: 10 }}>
           {
@@ -100,7 +115,7 @@ export default class Demo extends Component {
                   type={selected.includes(btn) ? 'primary' : ''}
                   disabled={!unDisabled.includes(valueInLabel[btn])}
                   onClick={() => {
-                    this.onClickSelType(btn, valueInLabel[btn]);
+                    this.onClickSelType(btn, valueInLabel[btn], index);
                   }}
                 >{btn}
                 </Button>
